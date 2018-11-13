@@ -1,0 +1,523 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~foundation-sites/dist/css/foundation.css";
+@import "~foundation-sites/scss/foundation.scss";
+@import "assets/custom";
+@import "~foundation-icons/foundation-icons.css";
+
+html {
+    height: 100%;
+    
+}
+body {
+  background: $primary-color;
+  height: calc(100% - 61px);
+  overflow: scroll;
+  padding-bottom: 200px;
+
+}
+
+.fixed {
+  height: 250px;
+  overflow: hidden;
+}
+
+p {
+color: $primary-text;
+    font-family: $theme-font;
+    font-size: 16px;
+}
+
+h4 {
+  color: $primary-text;
+  font-family: 'Amatic SC', cursive;
+  font-size: 36px;
+  font-weight: bold;
+  margin-top: 1em;
+}
+
+div p {
+  margin-top: 1em;
+}
+
+label  {
+  font-size: 14px;
+  font-family: $theme-font;
+  border: 0;
+}
+
+select {
+  background-color: $button-color-light !important;
+  color: $primary-text;
+  border-radius: 3%;
+  border: none;
+  box-shadow: $theme-shadow;
+}
+
+button.success {
+  background: $button-color-light !important;
+  color: $primary-text !important;
+  font-family: $theme-font;
+  font-weight: bold;
+  border-radius: 3%;
+  box-shadow: $theme-shadow;
+}
+
+button.mapbutton.success.button {
+  background: $button-color-light !important;
+  color: $primary-text !important;
+  font-family: $theme-font;
+  font-weight: bold;
+  border-radius: 3%;
+  box-shadow: $theme-shadow;
+  margin-bottom: 100px;
+}
+
+
+.top-bar {
+  height: 3em;
+  background-color: $primary-text;
+  filter: opacity(40%);
+  box-shadow: $theme-shadow;
+
+  p {
+    font: 400 24px/1.5 'Pacifico', Helvetica, sans-serif;
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.1), 7px 7px 0px rgba(0,0,0,0.05);
+    color: white !important;
+    margin: 3px;
+  }
+
+  img {
+    height: 3em;
+  }
+}
+
+.mobile-bottom-bar {
+  width: 100%;
+  height: 3.7rem;
+  background: $nav-background;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+
+  .active {
+    color: #000 !important;
+  }
+
+  .footer-link {
+    flex: 1 1 auto;
+    text-align: center;
+    color: #FFF;
+    text-transform: uppercase;
+    font-size: rem-calc(40);
+    font-weight: bold;
+    padding: 0.907rem 1rem;
+
+    i.fi {
+      opacity: 0.8;
+      margin-right: rem-calc(10);
+      font-size: rem-calc(24);
+      vertical-align: middle;
+    }
+
+    &:focus,
+    &:active {
+      color: #000;
+    }
+  }
+
+  .footer-text {
+    position: relative;
+    top: 2px;
+    font-weight: bold;
+    font-size: rem-calc(14);
+    color: #FFF;
+  }
+}
+
+
+@mixin circle-graph-circle($size) {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - #{$size/2});
+  top: calc(50% - #{$size/2});
+  width: $size;
+  height: $size;
+
+}
+
+$circle-graph-size: rem-calc(170);
+$circle-graph-percent-number-size: rem-calc(30);
+$circle-graph-percent-unit-size: rem-calc(16);
+$circle-graph-background-color: $primary-color;
+$circle-graph-empty-color: #C2D9B4;
+$circle-graph-fill-color: $primary-text;
+$circle-graph-smaller: rem-calc(130);
+
+.circle-graph {
+  width: $circle-graph-size;
+  height: $circle-graph-size;
+  border-radius: 50%;
+  background-color: $circle-graph-empty-color;
+  position: relative;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  
+
+  &.gt-50 {
+    background-color: $circle-graph-fill-color;
+  }
+}
+
+.circle-graph-progress {
+  clip: rect(0, 10.625rem, 10.625rem, calc(10.625rem / 2));
+}
+
+.circle-graph-progress-fill {
+  clip: rect(0, calc(10.625rem / 2), 10.625rem, 0)
+}
+
+.circle-graph-progress {
+  @include circle-graph-circle($circle-graph-size);
+  clip: rect(0, $circle-graph-size, $circle-graph-size, #{$circle-graph-size/2});
+
+  .circle-graph-progress-fill {
+    @include circle-graph-circle($circle-graph-size);
+    clip: rect(0, #{$circle-graph-size/2}, $circle-graph-size, 0);
+    background: $circle-graph-fill-color;
+    transform: rotate(60deg);
+  }
+
+  .gt-50 & {
+    clip: rect(0, #{$circle-graph-size/2}, $circle-graph-size, 0);
+
+    .circle-graph-progress-fill {
+      clip: rect(0, $circle-graph-size, $circle-graph-size, #{$circle-graph-size/2});
+      background: $circle-graph-empty-color;
+    }
+  }
+}
+.circle-graph-percents {
+  @include circle-graph-circle(#{$circle-graph-smaller});
+  background: $circle-graph-background-color;
+  text-align: center;
+  display: table;
+  z-index: 4;
+
+  .circle-graph-percents-number {
+    display: block;
+    font-size: $circle-graph-percent-number-size;
+    font-weight: bold;
+    color: $circle-graph-fill-color;
+    font-family: 'Amatic SC', cursive;
+  }
+
+  .circle-graph-percents-units {
+    display: block;
+    font-size: $circle-graph-percent-unit-size;
+    font-weight: bold;
+    font-family: 'Amatic SC', cursive;
+  }
+}
+.circle-graph-percents-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+  line-height: 0;
+
+  span {
+    line-height: 1;
+  }
+}
+
+.button-icon-badge {
+  padding: 2rem 2rem;
+  border-radius: 3%;
+  margin-bottom: 0;
+  box-shadow: $theme-shadow;
+  /* font-family: 'Amatic SC', cursive; */
+  font-size: 16px;
+  height: 70px;
+  width: 80%;
+  padding-top: 28px;
+
+  .badge-text {
+    margin-left: 0;
+  }
+
+  i {
+    font-size: 2rem;
+    margin-right: 0;
+    float: right;
+    margin-top: -24px;
+  }
+}
+
+.button-light {
+  background: $button-color-light !important;
+  color: $primary-text;
+}
+
+.button-dark {
+  background: $button-color !important;
+  color: white;
+}
+
+.button-small {
+  background: $primary-text !important;
+  color: white;
+  box-shadow: $theme-shadow;
+  border-radius: 3%;
+  width: 46%;
+  height: 15%;
+  font-size: 12px !important;
+}
+
+
+.homeinfo {
+    background: $button-color;
+    border-radius: 3%;
+    box-shadow: $theme-shadow;
+    height: auto;
+
+    i {
+     color: $white;
+     font-size: 2.5rem;
+     padding: 2rem;
+     margin-top: 5em;
+    }
+    .info-text {
+      color: $white;
+    }
+}
+
+.homeinfosecond {
+    background: $button-color;
+    border-radius: 3%;
+    box-shadow: $theme-shadow;
+    height: auto;
+    margin-bottom: 100px;
+
+    i {
+     color: $white;
+     font-size: 2.5rem;
+     padding: 2rem;
+     margin-top: 5em;
+    }
+    .info-text {
+      color: $white;
+    }
+}
+
+.homebutton {
+    border-radius: 5%;
+
+    i {
+      color: white;
+      font-size: 2.5rem;
+    }
+}
+
+.reveal {
+    background: $primary-color;
+
+    button.expanded {
+        background: $button-color !important;
+        color: white;
+        height: 5em;
+        border-radius: 3%;
+        box-shadow: $theme-shadow;
+    }
+}
+
+h2 {
+  color: $button-color;
+  font-family: $theme-font;
+}
+
+div#tulokset {
+
+p {
+  border: 1px solid $primary-text;
+  margin: 1px;
+    }
+
+}
+
+
+
+button.map.close-button, button.map.close-button.medium {
+
+  font-size: 5em;
+  color: #989898;
+
+  }
+
+  div.grid-x.ritva {
+    margin-bottom: 100px;
+  }
+
+  i.fi-skull {
+    font-size: rem-calc(46);
+    top: 50%;
+  }
+
+.hide {
+  display: none;
+}
+
+.stats {
+  background: $button-color;
+  border-radius: 3%;
+  box-shadow: $theme-shadow;
+  height: 22%;
+  margin-top: 10%;
+  color: white;
+}
+
+.stats-list {
+  list-style-type: none;
+  clear: left;
+  margin: 0;
+  padding-top: 1em;
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 10%;
+
+  .stats-list-positive {
+    color: $primary-text;
+  }
+
+  .text-center {
+    color: $primary-text !important;
+    font-size: 12px !important;
+  }
+
+  & > li {
+    display: inline-block;
+    margin-right: 10px;
+    padding-right: 10px;
+    border-right: 1px solid $medium-gray;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: bold;
+
+    &:last-child {
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .stats-list-label {
+      display: block;
+      margin-top: 2px;
+      font-size: 0.9em;
+      font-weight: normal;
+    }
+  }
+}
+
+$bar-graph-height: 350px;
+
+.bar-graph {
+  padding: 0;
+  width: 90%;
+  display: flex;
+  align-items: flex-end;
+  height: $bar-graph-height;
+  margin: 0;
+  bottom: 0;
+  position: absolute;
+  margin-bottom: 20%;
+
+  li {
+    display: block;
+    padding: rem-calc(1) 0;
+    position: relative;
+    text-align: center;
+    vertical-align: bottom;
+    border-radius: 4px 4px 0 0;
+    max-width: 20%;
+    height: 100%;
+    margin: 0 1.8% 0 0;
+    flex: 1 1 15%;
+  }
+
+  .bar-graph-axis {
+    flex: 1 1 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .bar-graph-label {
+    margin: 0;
+    background-color: none;
+    color: $dark-gray;
+    position: relative;
+    font-size: 12px;
+
+    @include breakpoint(medium) {
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        border-bottom: 1px dashed $dark-gray;
+        top: 0;
+        left: 0;
+        height: 50%;
+        width: 20%;
+
+        @include breakpoint(large) {
+          width: 30%;
+        }
+      }
+
+      &:after {
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+
+  .percent {
+    letter-spacing: -3px;
+    opacity: 0.4;
+    width: 100%;
+    font-size: rem-calc(30);
+    position: absolute;
+
+    @include breakpoint(medium) {
+      font-size: rem-calc(62);
+    }
+
+    span {
+      font-size: rem-calc(30);
+    }
+  }
+
+  .description {
+    font-weight: 800;
+    opacity: 0.3;
+    text-transform: uppercase;
+    width: 100%;
+    font-size: 14px;
+    bottom: 5px;
+    position: absolute;
+    overflow: hidden;
+    font-size: 70%;
+    bottom: 10px;
+  }
+
+  .bar {
+    height: 0%;
+    @each $name, $color in $foundation-palette {
+      &.#{$name} {
+        border: 1px solid $primary-text;
+        background: linear-gradient(lighten($primary-text, 10%), $primary-text 70%);
+
+      }
+    }
+  }
+}

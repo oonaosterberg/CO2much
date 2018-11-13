@@ -1,0 +1,15 @@
+$primary-color: #CAE2BC;
+$nav-background: #b5c5b3;
+$button-color: #85AE6D;
+$button-color-light: #A1D086;
+$primary-text: #5E8249;
+$background-second: #66ba73;
+$reveal-color: #8ecc7a;
+$button-reveal: #64d24b;
+$theme-shadow: 3px 3px 1px $nav-background;
+$theme-font: 'Raleway', sans-serif;
+
+@function rem-calc($size) {
+  $remSize: $size / 16;
+  @return #{$remSize}rem;
+}

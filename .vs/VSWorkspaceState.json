@@ -1,0 +1,17 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\homepage",
+    "\\src\\app\\mapinfo",
+    "\\src\\app\\native-map",
+    "\\src\\app\\navigationbar",
+    "\\src\\app\\pageinfo",
+    "\\src\\app\\pipes",
+    "\\src\\assets",
+    "\\src\\assets\\images"
+  ],
+  "SelectedNode": "\\src\\app\\native-map\\native-map.component.ts",
+  "PreviewInSolutionExplorer": false
+}

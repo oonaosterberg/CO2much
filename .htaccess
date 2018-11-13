@@ -1,0 +1,7 @@
+<ifModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HomepageComponent} !-f
+    RewriteCond %{MapinfoComponent} !-d
+    RewriteCond %{PageinfoComponent } !index
+    RewriteRule (.*) index.html [L]
+</ifModule>

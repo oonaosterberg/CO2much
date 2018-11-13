@@ -1,0 +1,164 @@
+<div>
+    <div class="grid-x fixed">
+
+        <div class="cell small-6 text-center"><br>
+            <h4 id="progress">{{progresstext}}</h4>
+            <button id="winButton" data-open="winModal" class="button button-small">Show stats</button>
+        </div>
+
+        <div class="cell small-6">
+            <div class="circle-graph" id="circle" data-circle-graph data-percent="0">
+                <div class="circle-graph-progress">
+                    <div class="circle-graph-progress-fill"></div>
+                </div>
+                <div class="circle-graph-percents">
+                    <div class="circle-graph-percents-wrapper">
+                        <span class="circle-graph-percents-number"></span>
+                        <span class="circle-graph-percents-units"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<div class="row">
+    <div class="twelve columns text-center"><br>
+       <a class="button button-dark button-icon-badge" data-open="settings-modal">
+      <span class="button-icon-badge-text">Reduce your carbon footprint</span>
+ <!--   <i class="fi-arrow-right"></i> -->
+</a>
+    </div>
+</div>
+
+<div class="grid-x ritva">
+    <div class="cell text-center"><br>
+       <a class="button button-light button-icon-badge" routerLink="../map">
+      <span class="button-icon-badge-text">Going somewhere?</span>
+       <div class="cell small-6">
+    <i class="fi-arrow-right"></i>
+    </div>
+      </a>
+    </div>
+</div>
+
+
+<div class="reveal" id="settings-modal" data-reveal>
+    <br>
+    <p>On road:</p>
+    <button id="task1" type="button" class="button expanded task" (click)="doTask($event)">Travel by public
+        transportation
+    </button>
+    <button id="task2" type="button" class="button expanded task" (click)="doTask($event)">Travel by bicycle</button>
+    <button id="task3" type="button" class="button expanded task" (click)="doTask($event)">Travel by foot</button>
+    <button id="task4" type="button" class="button expanded task" (click)="doTask($event)">Combine two errands in one
+        trip
+    </button>
+    <button id="task5" type="button" class="button expanded task" (click)="doTask($event)">Share a car ride with a
+        friend
+    </button>
+    <p>At home:</p>
+    <button id="task6" type="button" class="button expanded task" (click)="doTask($event)">Recycle glass</button>
+    <button id="task7" type="button" class="button expanded task" (click)="doTask($event)">Turn off devices when not
+        using them
+    </button>
+    <button id="task8" type="button" class="button expanded task" (click)="doTask($event)">Recycle plastic bottles
+    </button>
+    <button id="task9" type="button" class="button expanded task" (click)="doTask($event)">Have a meal with no meat
+    </button>
+    <button id="task10" type="button" class="button expanded task" (click)="doTask($event)">Have a meal with no dairy
+    </button>
+    <p>At the store:</p>
+    <button id="task11" type="button" class="button expanded task" (click)="doTask($event)">Bring your own bag instead
+        of buying a plastic bag
+    </button>
+    <button id="task12" type="button" class="button expanded task" (click)="doTask($event)">Buy at least one organic
+        product
+    </button>
+    <button id="task13" type="button" class="button expanded task" (click)="doTask($event)">Buy a recycled piece of
+        clothing
+    </button>
+
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="reveal" id="winModal" data-reveal data-animation-in="fade-in">
+    <!-- <div class="form-registration">
+        <figure class="form-registration-img">
+            <img src="../../assets/images/forest.jpg" alt="" />
+            <figcaption class="form-registration-img-caption"></figcaption>
+        </figure>
+    </div> -->
+    <div class="grid-x">
+    <div class=" cell text-center">
+
+        <ul class="stats-list">
+            <li class="stats-list-positive">
+                {{daysCompleted}} <span class="stats-list-label">Days completed</span>
+            </li>
+            <li class="stats-list-positive">
+                {{daysInaRow}} <span class="stats-list-label">Days in a row</span>
+            </li>
+        </ul>
+
+        <p class="since">Since {{this.dmy}}</p>
+    </div>
+    </div>
+
+   <div class="grid-x">
+    <ul class="bar-graph" id="bars">
+        <li class="bar-graph-axis">
+            <div class="bar-graph-label">100%</div>
+            <div class="bar-graph-label">80%</div>
+            <div class="bar-graph-label">60%</div>
+            <div class="bar-graph-label">40%</div>
+            <div class="bar-graph-label">20%</div>
+            <div class="bar-graph-label">0%</div>
+        </li>
+        <li id="1" class="bar primary" title="95">
+            <div class="description">J<br>a<br>n</div>
+        </li>
+        <li id="2" class="bar secondary" title="90">
+            <div class="description">f<br>e<br>b</div>
+        </li>
+        <li id="3" class="bar success" title="80">
+            <div class="description">m<br>a<br>r</div>
+        </li>
+        <li id="4" class="bar warning" style="height: 0%;" title="75">
+            <div class="description">a<br>p<br>r</div>
+        </li>
+        <li id="5" class="bar alert" style="height: 0%;" title="40">
+            <div class="description">m<br>a<br>y</div>
+        </li>
+        <li id="6" class="bar primary" style="height: 0%;" title="95">
+            <div class="description">J<br>u<br>n</div>
+        </li>
+        <li id="7" class="bar secondary" style="height: 0%;" title="90">
+            <div class="description">J<br>u<br>l</div>
+        </li>
+        <li id="8" class="bar success" style="height: 0%;" title="80">
+            <div class="description">a<br>u<br>g</div>
+        </li>
+        <li id="9" class="bar warning" style="height: 0%;" title="75">
+            <div class="description">s<br>e<br>p</div>
+        </li>
+        <li id="10" class="bar alert" style="height: 0%;" title="40">
+            <div class="description">o<br>c<br>t</div>
+        </li>
+        <li id="11" class="bar warning" style="height: 0%;" title="75">
+            <div class="description">n<br>o<br>v</div>
+        </li>
+        <li id="12" class="bar alert" style="height: 0%;" title="40">
+            <div class="description">d<br>e<br>c</div>
+        </li>
+    </ul>
+    </div>
+
+    <!--<a href="http://thecatapi.com"><img src="http://thecatapi.com/api/images/get?format=src&type=gif"></a> -->
+
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>

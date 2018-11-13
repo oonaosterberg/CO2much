@@ -1,0 +1,172 @@
+<!--{{locationChosen}} -->
+
+<form>
+  <div class="grid-container">
+    <div class="grid-x grid-padding-x">
+<div class="medium-6 cell">
+<label>
+From: <input type="text" [(ngModel)]="origin" (click)="reset()" [ngModelOptions]="{standalone: true}"> <br>
+</label>
+</div>
+</div>
+</div>
+</form>
+
+<form>
+  <div class="grid-container">
+    <div class="grid-x grid-padding-x">
+<div class="medium-6 cell">
+<label>
+To: <input type="text" [(ngModel)]="destination" (click)="resetDestination()" [ngModelOptions]="{standalone: true}"> <br>
+</label>
+</div>
+</div>
+</div>
+</form>
+
+
+<form>
+  <div class="grid-container">
+    <div class="grid-x grid-padding-x">
+<div class="small-8 cell">
+
+<label>Form of Transportation</label> <select (change)="selectMode($event)"> <br>
+    <option value=""></option>
+    <option value="WALKING">Walking</option>
+    <option value="BICYCLING">Bicycling</option>
+    <option value="TRANSIT">Transit</option>
+    <option value="DRIVING">Car</option>
+
+</select>
+
+
+
+    <select *ngIf="travelMode == 'TRANSIT'" (change)="selectTransitOption($event)">
+        <option value=""></option>
+        <option value="BUS">Bus</option>
+        <option value="RAIL">Rail</option>
+        <option value="SUBWAY">Subway</option>
+        <option value="TRAIN">Train</option>
+        <option value="TRAM">Tram</option>
+    </select>
+
+
+
+</div>
+<div class="small-4 cell"><br>
+<button type="button" class="success button expanded" (click)="hae()">Search</button>
+</div>
+</div>
+</div>
+</form>
+
+<div class="reveal" id="map-modal" data-reveal>
+
+
+<agm-map #map *ngIf="locationChosen" [zoom]="mapzoom">
+    <sebm-google-map-directions [travelMode]="travelMode" [origin]="origin" (matkaUpdated)="paivitaMatka($event)" (aikaUpdated)="paivitaAika($event)"
+                                [destination]="destination" [transitOption]="TransitMode">
+                                <app-native-map></app-native-map>
+                                </sebm-google-map-directions>
+    
+</agm-map>
+<button class="map close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+
+</div>
+<div class="grid-x">
+  <div class="cell text-center">
+  <!--
+  <p *ngFor="let result of kilometerResult">
+
+     {{result.distance.text}}
+     {{result.travel_mode}} -->
+   <!--  {{result.transit_details.line.vehicle.type}} -->
+   <!--
+  </p>
+  -->
+  <p>
+
+  <!--{{result}} -->
+  <!-- {{result.routes[0].legs[0].distance.text}} -->
+
+  </p>
+ 
+
+ <!-- <h3> {{joku}}  </h3> -->
+ <div id="tulokset" *ngIf="locationChosen">
+ <div class="grid-x">
+ <div class="cell auto" *ngIf="walkingParts">
+   <p>walking: <br> {{walking | piippu}} </p>
+   </div>
+   <div class="cell auto" *ngIf="walkingChosen">
+   <p>walking: <br> {{walkingDistance | piippu}} </p>
+   </div>
+   <div class="cell auto" *ngIf="bicycleChosen">
+   <p>bicycling: <br> {{bicycleTrip | piippu}} </p>
+   </div>
+   <div class="cell auto" *ngIf="busTripChosen">
+   <p>bus: <br> {{busTrip | piippu}} <br> <b>{{busemissions}}</b> </p>
+   </div>
+   <div class="cell auto" *ngIf="trainTripChosen">
+   <p>train: <br> {{trainTrip | piippu}} <br> <b>{{trainemissions}}</b> </p>
+   </div>
+   <div class="cell auto" *ngIf="tramTripChosen">
+   <p>tram: <br> {{tramTrip | piippu}} <br> <b>{{railemissions}}</b></p>
+   </div>
+   <div class="cell auto" *ngIf="subwayTripChosen">
+   <p>subway: <br> {{subwayTrip | piippu}} <br> <b>{{subwayemissions}}</b></p>
+   </div>
+   <div class="cell auto" *ngIf="carTripChosen">
+   <p>car: <br> {{carTrip | piippu}} <br> <b>{{caremissions}}</b> </p>
+   </div>
+   <div class="cell auto">
+   <p>duration: <br> {{duration}} </p>
+   </div>
+   <div class="cell auto">
+   <p>total length: <br> {{wholeDistance | piippu}} </p>
+   </div>
+    <!-- <p>flight: <br> {{wholeDistance | piippu}} <br> {{flightemissions}} </p> -->
+   </div>
+  </div>
+
+  <div *ngIf="locationChosen">
+    <div class="grid-x">
+     <div class="cell small-2 align-self-bottom">
+   <i class="fi-skull"></i>
+   </div>
+      <div class="cell small-10 text-left">
+   <p>Did you know that your trip emits <br> <b>{{flightemissions}}</b> travelled by airplain?</p>
+      </div>
+    </div>
+  </div>
+ 
+<!--<p *ngIf="locationChosen">--><button *ngIf="locationChosen" class="mapbutton success button" data-open="map-modal" (click)="resetMap()">Show map</button>
+
+  </div>
+</div>
+
+<div class="grid-x">
+  <div class="cell text-center">
+
+
+</div>
+</div>
+<!--{{response.routes[0].legs[0].steps[1]}}-->
+
+<!--{{directionsservice.routes.legs.steps[0].distance}} -->
+<!--
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<p *ngIf="locationChosen"><button class="button" data-open="exampleModal1">Show map</button></p>
+
+-->
+
+
+
+
+
