@@ -57,7 +57,7 @@ export class MapinfoComponent implements OnInit{
     flightemissions: any;
 
 
-    bposoite = 'http://impact.brighterplanet.com';f
+    bposoite = 'http://impact.brighterplanet.com';
 
 
     origin = 'Matinniitynkuja 4';  // its a example aleatory position
